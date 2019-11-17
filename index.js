@@ -1,8 +1,17 @@
 var matrix = require('@matrix-io/matrix-lite');
+var nfc = require("@matrix-io/matrix-lite-nfc");
 var mqtt = require('mqtt');
 
 var hostname = "mqtt://localhost"; //"mqtt://raspberrypi.local";
 var client  = mqtt.connect(hostname);
+
+var nfcOptions = {
+    rate: 10,
+    info: true,
+    // pages: true,
+    // page: 0,
+    // ndef: true
+}
 
 console.log("[Snips Log] begin");
 
@@ -140,6 +149,56 @@ function onIntentDetected(topic, message) {
                             }));
 
                             // TODO: NFC!
+
+                            nfc.read.start(nfcOptions, (code, tag)=>{
+                                switch(code) {
+                                    case 256:
+                                        console.log("[Snips Log] NFC tag scanned:");
+                                        console.log(tag);
+                                        
+                                        nfc.read.stop();
+
+                                        console.log("[Snips Log] NFC tag UID: " + tag.info.UID);
+
+                                        if (tag.info.UID === "C22081E3") {
+                                            console.log("[Snips Log] purple circle");
+
+                                            matrix.led.set("purple");
+                                            
+                                            client.publish('hermes/dialogueManager/startSession', JSON.stringify({
+                                                init: {
+                                                    type: "action",
+                                                    text: "You did it! You put the purple circle on my head! Would you like to play another game?",
+                                                    canBeEnqueued: true
+                                                    // TODO: intentFilter
+                                                }
+                                            }));
+                                        } else {
+                                            console.log("[Snips Log] not purple circle");
+
+                                            matrix.led.set("orange");
+                                            
+                                            client.publish('hermes/dialogueManager/startSession', JSON.stringify({
+                                                init: {
+                                                    type: "action",
+                                                    text: "Oops! That's not the purple circle! Say shapes to try again, or colours to play a different game!",
+                                                    canBeEnqueued: true
+                                                    // TODO: intentFilter
+                                                }
+                                            }));
+                                        }
+                                        
+                                        break;
+
+                                    case 1024:
+                                        console.log("[Snips Log] no NFC tag scanned");
+                                        break;
+                                    
+                                    default:
+                                        console.log("[Snips Log] NFC status code: " + nfc.status(code));
+                                }   
+                            });
+
                         } else {
 
                             // TODO: add colours handling!
