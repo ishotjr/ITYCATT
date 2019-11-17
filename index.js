@@ -24,12 +24,23 @@ client.on('connect', function () {
     client.publish('hermes/dialogueManager/startSession', JSON.stringify({
         init: {
             type: "notification",
+            // TODO: dynamic time of day
             text: "Good morning! My name is ITTY-CAT!" // (sic)
         }
     }));
 
     // subscribe to wildcard topic vs. individual intents!
     client.subscribe('hermes/#');
+
+    // request user name
+    client.publish('hermes/dialogueManager/startSession', JSON.stringify({
+        init: {
+            type: "action",
+            text: "What is your name?",
+            canBeEnqueued: true
+            // TODO: intentFilter
+        }
+    }));
 });
 
 client.on('message', function (topic, message) {
