@@ -170,6 +170,9 @@
   "custom_entity_parser": "custom_entity_parser",
   "dataset_metadata": {
     "entities": {
+      "snips/default--game": {
+        "automatically_extensible": false
+      },
       "snips/default--name": {
         "automatically_extensible": false
       },
@@ -181,6 +184,9 @@
     "slot_name_mappings": {
       "ishotjr:GameReply": {
         "reply": "snips/default--reply"
+      },
+      "ishotjr:GameSelection": {
+        "game": "snips/default--game"
       },
       "ishotjr:Welcome": {
         "name": "snips/default--name"

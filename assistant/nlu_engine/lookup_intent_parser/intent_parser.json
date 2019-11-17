@@ -19,6 +19,17 @@
       "entity_scope": {
         "builtin": [],
         "custom": [
+          "snips/default--game"
+        ]
+      },
+      "intent_group": [
+        "ishotjr:GameSelection"
+      ]
+    },
+    {
+      "entity_scope": {
+        "builtin": [],
+        "custom": [
           "snips/default--name"
         ]
       },
@@ -29,17 +40,36 @@
   ],
   "intents_names": [
     "ishotjr:GameReply",
+    "ishotjr:GameSelection",
     "ishotjr:Welcome"
   ],
   "language_code": "en",
   "map": {
-    "155032841": [
+    "-1436635165": [
       1,
       [
         1
       ]
     ],
+    "-74565844": [
+      1,
+      [
+        1
+      ]
+    ],
+    "155032841": [
+      2,
+      [
+        2
+      ]
+    ],
     "346878145": [
+      2,
+      [
+        2
+      ]
+    ],
+    "360945287": [
       1,
       [
         1
@@ -52,6 +82,12 @@
       ]
     ],
     "791217406": [
+      2,
+      [
+        2
+      ]
+    ],
+    "1808262806": [
       1,
       [
         1
@@ -60,6 +96,7 @@
   },
   "slots_names": [
     "reply",
+    "game",
     "name"
   ],
   "stop_words_whitelist": {}

@@ -1,12 +1,16 @@
 {
   "parsers_metadata": [
     {
-      "entity_identifier": "snips/default--name",
+      "entity_identifier": "snips/default--game",
       "entity_parser": "parser_1"
     },
     {
-      "entity_identifier": "snips/default--reply",
+      "entity_identifier": "snips/default--name",
       "entity_parser": "parser_2"
+    },
+    {
+      "entity_identifier": "snips/default--reply",
+      "entity_parser": "parser_3"
     }
   ]
 }

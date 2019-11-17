@@ -163,8 +163,12 @@
       "slot_filler_name": "slot_filler_0"
     },
     {
-      "intent": "ishotjr:Welcome",
+      "intent": "ishotjr:GameSelection",
       "slot_filler_name": "slot_filler_1"
+    },
+    {
+      "intent": "ishotjr:Welcome",
+      "slot_filler_name": "slot_filler_2"
     }
   ]
 }

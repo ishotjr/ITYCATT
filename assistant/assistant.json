@@ -2,6 +2,20 @@
   "id" : "proj_eNgmq8qorPD",
   "name" : "ITYCATT",
   "intents" : [ {
+    "id" : "ishotjr:GameSelection",
+    "type" : "registry",
+    "version" : "0.2.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "game",
+      "id" : "edYX2-YiU",
+      "entityId" : "snips/default",
+      "missingQuestion" : "",
+      "required" : false
+    } ],
+    "name" : "GameSelection",
+    "enabledByDefault" : true
+  }, {
     "id" : "ishotjr:GameReply",
     "type" : "registry",
     "version" : "0.2.0",

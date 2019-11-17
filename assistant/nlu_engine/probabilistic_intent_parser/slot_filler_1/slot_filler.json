@@ -70,7 +70,7 @@
       {
         "args": {
           "entities": [
-            "snips/default--name"
+            "snips/default--game"
           ],
           "entity_filter": {
             "automatically_extensible": false
@@ -146,9 +146,9 @@
     "unit_name": "crf_slot_filler"
   },
   "crf_model_file": "model.crfsuite",
-  "intent": "ishotjr:Welcome",
+  "intent": "ishotjr:GameSelection",
   "language_code": "en",
   "slot_name_mapping": {
-    "name": "snips/default--name"
+    "game": "snips/default--game"
   }
 }

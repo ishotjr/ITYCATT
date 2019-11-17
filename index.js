@@ -80,6 +80,7 @@ function onIntentDetected(topic, message) {
                 client.publish('hermes/dialogueManager/continueSession', JSON.stringify({
                     sessionId: message.sessionId,
                     text: "Hello " + name + "! Would you like to play a game?"
+                    // TODO: intentFilter
                 }));
             }
             break;
@@ -103,6 +104,7 @@ function onIntentDetected(topic, message) {
                     client.publish('hermes/dialogueManager/continueSession', JSON.stringify({
                         sessionId: message.sessionId,
                         text: "Yay! Would you like to play shapes, or colors?"
+                        // TODO: intentFilter
                     }));
                 } else {
                     matrix.led.set("magenta");
@@ -115,6 +117,43 @@ function onIntentDetected(topic, message) {
             }
             break;
 
+            case "hermes/intent/ishotjr:GameSelection":
+                    if (typeof message.slots[0] === 'undefined') {
+                        matrix.led.set("red");
+                
+                        client.publish('hermes/dialogueManager/endSession', JSON.stringify({
+                            sessionId: message.sessionId,
+                            text: "I'm afraid I didn't catch that?"
+                        }));
+                    } else {
+                        game = message.slots[0].value.value;
+                
+                        console.log("[Snips Log] game: " + game);
+                            
+                        if (game === "shapes") {
+                            matrix.led.set("purple");
+                            
+                            client.publish('hermes/dialogueManager/endSession', JSON.stringify({
+                                sessionId: message.sessionId,
+                                text: "Hooray! Can you put the purple circle on my head?"
+                                // TODO: intentFilter
+                            }));
+
+                            // TODO: NFC!
+                        } else {
+
+                            // TODO: add colours handling!
+
+                            matrix.led.set("gold");
+                                    
+                            client.publish('hermes/dialogueManager/endSession', JSON.stringify({
+                                sessionId: message.sessionId,
+                                text: "TO DO: add colours game!"
+                            }));
+                        }
+                    }
+                    break;
+        
         default:
             matrix.led.set("red");
     

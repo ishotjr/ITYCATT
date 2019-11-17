@@ -1,15 +1,22 @@
 {
     "snips/default--reply": {
-        "vanilla": "1f01b359-326c-429c-82df-f7e916ffb516.vanilla", 
+        "vanilla": "7032e012-e63d-4e4e-855a-c9b918289608.vanilla", 
         "ngram": true, 
-        "added": "1f01b359-326c-429c-82df-f7e916ffb516.added", 
+        "added": "7032e012-e63d-4e4e-855a-c9b918289608.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "snips/default--game": {
+        "vanilla": "c7fa9f7c-8595-4740-ab3e-1baa65de7e03.vanilla", 
+        "ngram": true, 
+        "added": "c7fa9f7c-8595-4740-ab3e-1baa65de7e03.added", 
         "pruningThresholds": [], 
         "order": 3
     }, 
     "snips/default--name": {
-        "vanilla": "032ffc58-d27c-4177-99c6-1232c69f9ea7.vanilla", 
+        "vanilla": "d91f93b1-fbd2-49b8-80ef-c66dafe2c53c.vanilla", 
         "ngram": true, 
-        "added": "032ffc58-d27c-4177-99c6-1232c69f9ea7.added", 
+        "added": "d91f93b1-fbd2-49b8-80ef-c66dafe2c53c.added", 
         "pruningThresholds": [], 
         "order": 3
     }
