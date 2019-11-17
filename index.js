@@ -20,6 +20,14 @@ console.log(pressure);
 client.on('connect', function () {
     console.log("[Snips Log] Connected to MQTT broker " + hostname);
 
+    // greet user on connection
+    client.publish('hermes/dialogueManager/startSession', JSON.stringify({
+        init: {
+            type: "notification",
+            text: "Good morning! My name is ITTY-CAT!" // (sic)
+        }
+    }));
+
     // subscribe to wildcard topic vs. individual intents!
     client.subscribe('hermes/#');
 });
@@ -71,5 +79,7 @@ function onListeningStateChanged(listening) {
     console.log("[Snips Log] " + (listening ? "Start" : "Stop") + " listening");
     if (listening) {
         matrix.led.set("green");
+    } else {
+        matrix.led.set("black");
     }
 }
