@@ -1,0 +1,47 @@
+{
+  "id" : "proj_eNgmq8qorPD",
+  "name" : "ITYCATT",
+  "intents" : [ {
+    "id" : "ishotjr:GameReply",
+    "type" : "registry",
+    "version" : "0.2.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "reply",
+      "id" : "zPNr3eO0A",
+      "entityId" : "snips/default",
+      "missingQuestion" : "",
+      "required" : false
+    } ],
+    "name" : "GameReply",
+    "enabledByDefault" : true
+  }, {
+    "id" : "ishotjr:Welcome",
+    "type" : "registry",
+    "version" : "0.2.0",
+    "language" : "en",
+    "slots" : [ {
+      "name" : "name",
+      "id" : "_IFv4RVSw",
+      "entityId" : "snips/default",
+      "missingQuestion" : "",
+      "required" : false
+    } ],
+    "name" : "Welcome",
+    "enabledByDefault" : true
+  } ],
+  "createdAt" : "2019-11-10T04:42:16.357Z",
+  "language" : "en",
+  "version" : {
+    "nluModel" : "0.20.1"
+  },
+  "platform" : {
+    "type" : "raspberrypi"
+  },
+  "asr" : {
+    "type" : "snips"
+  },
+  "analyticsEnabled" : false,
+  "heartbeatEnabled" : false,
+  "hotword" : "hey_snips"
+}

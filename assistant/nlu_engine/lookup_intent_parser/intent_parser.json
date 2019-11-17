@@ -1,0 +1,66 @@
+{
+  "config": {
+    "ignore_stop_words": true,
+    "unit_name": "lookup_intent_parser"
+  },
+  "entity_scopes": [
+    {
+      "entity_scope": {
+        "builtin": [],
+        "custom": [
+          "snips/default--reply"
+        ]
+      },
+      "intent_group": [
+        "ishotjr:GameReply"
+      ]
+    },
+    {
+      "entity_scope": {
+        "builtin": [],
+        "custom": [
+          "snips/default--name"
+        ]
+      },
+      "intent_group": [
+        "ishotjr:Welcome"
+      ]
+    }
+  ],
+  "intents_names": [
+    "ishotjr:GameReply",
+    "ishotjr:Welcome"
+  ],
+  "language_code": "en",
+  "map": {
+    "155032841": [
+      1,
+      [
+        1
+      ]
+    ],
+    "346878145": [
+      1,
+      [
+        1
+      ]
+    ],
+    "689786817": [
+      0,
+      [
+        0
+      ]
+    ],
+    "791217406": [
+      1,
+      [
+        1
+      ]
+    ]
+  },
+  "slots_names": [
+    "reply",
+    "name"
+  ],
+  "stop_words_whitelist": {}
+}

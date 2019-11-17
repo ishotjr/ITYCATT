@@ -1,0 +1,43 @@
+{
+  "builtin_entity_scope": [],
+  "config": {
+    "unit_name": "tfidf_vectorizer",
+    "use_stemming": false,
+    "word_clusters_name": null
+  },
+  "language_code": "en",
+  "vectorizer": {
+    "idf_diag": [
+      3.751535313041949,
+      3.8693183486983322,
+      2.904237452654745,
+      2.904237452654745,
+      4.002849741322855,
+      3.6461747973841225,
+      4.002849741322855,
+      3.751535313041949,
+      3.751535313041949,
+      4.002849741322855,
+      3.5508646175797978,
+      3.751535313041949,
+      1.2302610190830736,
+      3.5508646175797978
+    ],
+    "vocab": {
+      "bob": 0,
+      "call": 1,
+      "entityfeaturesnipsdefaultname": 2,
+      "entityfeaturesnipsdefaultreply": 3,
+      "fred": 4,
+      "is": 5,
+      "joe": 6,
+      "me": 7,
+      "my": 8,
+      "name": 9,
+      "no": 10,
+      "people": 11,
+      "unknownword": 12,
+      "yes": 13
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parsers_metadata": [
+    {
+      "entity_identifier": "snips/default--name",
+      "entity_parser": "parser_1"
+    },
+    {
+      "entity_identifier": "snips/default--reply",
+      "entity_parser": "parser_2"
+    }
+  ]
+}

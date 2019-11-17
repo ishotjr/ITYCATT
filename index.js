@@ -51,33 +51,77 @@ client.on('message', function (topic, message) {
     } else if (topic.match(/hermes\/hotword\/.+\/detected/g) !== null) {
         onHotwordDetected()
     } else if (topic.match(/hermes\/intent\/.+/g) !== null) {
-        onIntentDetected(JSON.parse(message));
+        onIntentDetected(topic, JSON.parse(message));
     }
 });
 
-function onIntentDetected(intent) {
-    console.log("[Snips Log] Intent detected: " + JSON.stringify(intent));
+function onIntentDetected(topic, message) {
+    console.log("[Snips Log] Intent detected: " + JSON.stringify(message));
 
-    // TODO: check intent
+    // handle each intent
+    console.log("[Snips Log] topic: " + topic);
+    
+    switch(topic) {
+        case "hermes/intent/ishotjr:Welcome":
+            if (typeof message.slots[0] === 'undefined') {
+                matrix.led.set("red");
+        
+                client.publish('hermes/dialogueManager/endSession', JSON.stringify({
+                    sessionId: message.sessionId,
+                    text: "I'm afraid I didn't catch that?"
+                }));
+            } else {
+                name = message.slots[0].value.value;
+        
+                console.log("[Snips Log] name: " + name);
+        
+                matrix.led.set("blue");
+        
+                client.publish('hermes/dialogueManager/continueSession', JSON.stringify({
+                    sessionId: message.sessionId,
+                    text: "Hello " + name + "! Would you like to play a game?"
+                }));
+            }
+            break;
 
-    if (typeof intent.slots[0] === 'undefined') {
-        matrix.led.set("red");
+        case "hermes/intent/ishotjr:GameReply":
+            if (typeof message.slots[0] === 'undefined') {
+                matrix.led.set("red");
+        
+                client.publish('hermes/dialogueManager/endSession', JSON.stringify({
+                    sessionId: message.sessionId,
+                    text: "I'm afraid I didn't catch that?"
+                }));
+            } else {
+                reply = message.slots[0].value.value;
+        
+                console.log("[Snips Log] reply: " + reply);
+                    
+                if (reply === "yes") {
+                    matrix.led.set("yellow");
+                    
+                    client.publish('hermes/dialogueManager/continueSession', JSON.stringify({
+                        sessionId: message.sessionId,
+                        text: "Yay! Would you like to play shapes, or colors?"
+                    }));
+                } else {
+                    matrix.led.set("magenta");
+                            
+                    client.publish('hermes/dialogueManager/endSession', JSON.stringify({
+                        sessionId: message.sessionId,
+                        text: "OK! Just say my name if you change your mind later!"
+                    }));
+                }
+            }
+            break;
 
-        client.publish('hermes/dialogueManager/endSession', JSON.stringify({
-            sessionId: intent.sessionId,
-            text: "I'm afraid I didn't catch that?"
-        }));
-    } else {
-        name = intent.slots[0].value.value;
-
-        console.log("[Snips Log] name: " + name);
-
-        client.publish('hermes/dialogueManager/endSession', JSON.stringify({
-            sessionId: intent.sessionId,
-            text: "hello" + name
-        }));
-
-        matrix.led.set("blue");
+        default:
+            matrix.led.set("red");
+    
+            client.publish('hermes/dialogueManager/endSession', JSON.stringify({
+                sessionId: message.sessionId,
+                text: "I'm sorry, but something went wrong!"
+            }));
     }
 }
 

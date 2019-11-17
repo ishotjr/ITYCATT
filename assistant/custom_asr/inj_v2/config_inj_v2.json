@@ -1,0 +1,16 @@
+{
+    "snips/default--reply": {
+        "vanilla": "1f01b359-326c-429c-82df-f7e916ffb516.vanilla", 
+        "ngram": true, 
+        "added": "1f01b359-326c-429c-82df-f7e916ffb516.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }, 
+    "snips/default--name": {
+        "vanilla": "032ffc58-d27c-4177-99c6-1232c69f9ea7.vanilla", 
+        "ngram": true, 
+        "added": "032ffc58-d27c-4177-99c6-1232c69f9ea7.added", 
+        "pruningThresholds": [], 
+        "order": 3
+    }
+}
